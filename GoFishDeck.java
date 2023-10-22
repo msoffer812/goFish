@@ -24,39 +24,18 @@ public class GoFishDeck implements Deck{
 	@Override
 	public Card drawCard()
 	{
-		Card card = this.cards.get(0);
-		//Because you can't draw a card and it's still in the pile
-		this.cards.remove(0);
+		//Because you can't draw a card and it's still in the pile, we remove it
+		Card card = this.cards.remove(0);
 		return card; 
 	}
-	
 	//shuffle method
 	@Override
 	public void shuffleDeck()
 	{
 		Collections.shuffle(cards);
 	}
-	
-	public boolean checkBooks()
+	public boolean isEmpty()
 	{
-		String rank;
-		int count;
-		for(int i=0;i<cards.size();i++)
-		{
-			rank = cards.get(i).getRank();
-			count=0;
-			for(int z=0;z<cards.size();z++)
-			{
-				if(cards.get(z).equals(rank))
-				{
-					count++;
-				}
-			}
-			if (count == 4)
-			{
-				return true;
-			}
-		}
-		return false;
+		return this.cards.isEmpty();
 	}
 }

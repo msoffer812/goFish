@@ -7,22 +7,37 @@ public class Hand{
 	
 	public Hand(Card c)
 	{
+		cards = new ArrayList<>();
 		cards.add(c);
 		this.rank = c.getRank();
 	}
 	public Hand()
 	{
-		rank = "Go Fish";
-		cards = new ArrayList<Card>();
+		
 	}
 	public String getRank()
 	{
 		return rank;
 	}
-	
+	public boolean compareRank(String rank)//for rank comparisons given a string, good for requesting cards from a player. convert both to lowercase so case isn't included
+	{
+		if(this.rank.toLowerCase().equals(rank.toLowerCase()))
+		{
+			return true;
+		}
+		return false;
+	}
 	public boolean compareRank(Card c)
 	{
 		if(c.getRank().equals(this.rank))
+		{
+			return true;
+		}
+		return false;
+	}
+	public boolean compareRank(Hand h)
+	{
+		if(h.getRank().equals(this.rank))
 		{
 			return true;
 		}
@@ -35,7 +50,7 @@ public class Hand{
 	@Override
 	public String toString()
 	{
-		String s = cards.size() + " " + this.rank;
+		String s = cards.size() + " " + this.rank + "s";
 		return s;
 	}
 	public boolean isComplete()
@@ -48,14 +63,9 @@ public class Hand{
 	}
 	public List<Card> getCards()
 	{
-		List<Card> cards = new ArrayList<Card>();
-		for(int i=0;i<cards.size();i++)
-		{
-			cards.add(cards.get(i));
-		}
 		return cards;
 	}
-	//can override?
+	
 	public int size()
 	{
 		return cards.size();

@@ -29,7 +29,7 @@ public class GoFishCard implements Card{
 	@Override
 	public String toString()
 	{
-		String message =this.rank + " of " + this.suit;
+		String message = this.rank + " of " + this.suit;
 		return message;
 	}
 }
